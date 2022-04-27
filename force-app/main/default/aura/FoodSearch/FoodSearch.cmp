@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" >
+	
+    <aura:handler name="searchFormSubmit" event="c:SearchFormSubmitEvent" action="{!c.doFormSubmit}" />
+	
+    <lightning:card title="Search Your Hunger Killer" class="bottom_margin">
+        <c:FoodSearchForm />
+    </lightning:card>
+    
+</aura:component>

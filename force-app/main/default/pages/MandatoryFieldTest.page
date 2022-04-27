@@ -1,0 +1,19 @@
+<apex:page controller="cls_con">
+
+        <apex:form >
+
+        <apex:pageBlock >
+
+        <div class = "requiredInput">
+
+        <div class = "requiredBlock"></div>
+
+        <apex:inputtext value="{!ContactName}"  required="true"/>
+
+        </div>
+
+        </apex:pageBlock>
+
+        </apex:form>
+
+        </apex:page>

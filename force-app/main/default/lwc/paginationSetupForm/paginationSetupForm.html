@@ -1,0 +1,24 @@
+<template>
+    <lightning-layout multiple-rows>
+        <template if:true={firstPage}>
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="|<" variant="neutral" onclick={goToFirst}></lightning-button>
+            </lightning-layout-item>
+        </template>
+        <template if:true={firstPage}>
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="<" variant="neutral" onclick={goToPrev}></lightning-button>
+            </lightning-layout-item>
+        </template>
+        <template if:true={lastPage}>
+            <lightning-layout-item padding="around-small">
+                <lightning-button label=">" variant="neutral" onclick={goToNext}></lightning-button>
+            </lightning-layout-item>
+        </template>
+        <template if:true={lastPage}>
+            <lightning-layout-item padding="around-small">
+                <lightning-button label=">|" variant="neutral" onclick={goToEnd}></lightning-button>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

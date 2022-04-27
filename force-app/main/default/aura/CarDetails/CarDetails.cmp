@@ -1,0 +1,32 @@
+<aura:component implements="flexiPage:availableForAllPageTypes">
+    <aura:attribute name="Id" type="Id" access="public"/>
+	<aura:attribute name="car" type="Car__c" access="public" />
+    <aura:attribute name="recordError" type="String" access="private"/>
+    <aura:attribute name="tabId" type="Id" access="public"/>
+    <aura:handler event="c:CarSelectedApplicationEvent" action="{!c.onCarSelected}"/> <!-- application event doesnt require name attribute while handling-->
+    <aura:handler event="c:CarExpAdded" name="carExpAdded" action="{!c.onCarExpAdded}" />
+    <force:recordData aura:Id="service"
+                      recordId="{!v.Id}"
+                      mode="VIEW"
+                      targetFields="{!v.car}"
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.onRecordUpdated}"
+                      fields="Id, Name, Mileage__c, Per_Day_Rent__c,Build_Year__c,Contact__r.Name, Contact__r.Email,Contact__r.HomePhone,Car_Type__r.Name,Picture__c"/>
+    <lightning:layout multiplerows="true">
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" >
+            <aura:if isTrue="{! !empty(v.car)}">
+                <lightning:tabset aura:id="tabs" selectedTabId="{!v.tabId}">
+                    <lightning:tab label="Details" id="cardetailtab">
+                        <c:CarDetail car="{!v.car}"/>
+                    </lightning:tab>
+                    <lightning:tab label="Experiences" id="carexptab">
+                        <c:CarExperience aura:id="carExpId" car="{!v.car}"/>
+                    </lightning:tab>
+                    <lightning:tab label="Add Car Experience" id="addexptab">
+                        <c:AddCarExperience car="{!v.car}"/>
+                    </lightning:tab>
+                </lightning:tabset>
+            </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

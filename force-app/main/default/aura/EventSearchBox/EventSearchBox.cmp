@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:handler name="eventSearchFormSubmit" event="c:EventSearchFormSubmitEvent" action="{!c.doSearchEvent}"/>
+	<lightning:card title="EVENT SEARCH MANAGER" class="bottom_margin">
+        <c:EventSearchForm/>
+    </lightning:card>
+    <lightning:card title="EVENT SEARCH RESULTS" class="bottom_margin">
+        <c:EventSearchResults aura:id="eventSearchResults"/>
+    </lightning:card>
+    <lightning:card title="EVENT DETAILS" class="bottom_margin">
+        <c:SelectedEventDetails/>
+    </lightning:card>
+</aura:component>

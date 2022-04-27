@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="todayDate" type="date" access="public"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:registerEvent name="eventSearchFormSubmit" type="c:EventSearchFormSubmitEvent"/>
+	<lightning:layout horizontalAlign="center">
+        <lightning:layoutItem padding="around-small">
+            <lightning:input name="dateInput" aura:id="dateInputs" type="date"  label="" value="{!v.todayDate}" class="slds-form_inline"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">
+            <lightning:button variant="brand" label="Search Event" onclick="{!c.searchEvent}" />
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

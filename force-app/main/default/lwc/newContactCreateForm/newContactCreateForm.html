@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-card title="Create A New Contact">
+                    <lightning-input name="First Name" label="First Name" onchange={contactFirstNameChangeHandler}>
+                    </lightning-input>
+                    <lightning-input name="Last Name" label="Last Name" onchange={contactLastNameChangeHandler}>
+                    </lightning-input>
+                    <lightning-input name="Account Name" value={accountName} label="Account"></lightning-input>
+                    <lightning-input name="Appointment Set" label="Appointment Set" type="checkbox" data-id="checkbox">
+                    </lightning-input>
+                    <lightning-button label="Save" onclick={createContact} variant="brand"></lightning-button>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

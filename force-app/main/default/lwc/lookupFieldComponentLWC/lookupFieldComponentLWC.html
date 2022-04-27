@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Custom Reusable Lookup Field">
+        <lightning-layout>
+            <lightning-layout-item>
+                <template if:false={selectedValue}>
+                    <lightning-input type="text" placeholder="Input text.." onchange={inputTextHandler}></lightning-input>
+                    <template if:true={searchKey}>
+                        <template if:true={allRecords}>
+                            <template for:each={allRecords} for:item= "record">
+                                <c-lookup-result-component-l-w-c key={record.Id} record={record} icon-name={iconName} onselect={handleSelect}></c-lookup-result-component-l-w-c>
+                            </template>
+                        </template>
+                    </template>
+                </template>
+                <template if:true={selectedValue}>
+                    <div class="slds-combobox__form-element slds-input-has-icon 
+                                slds-input-has-icon_left-right" role="none">
+                        <span class="slds-icon_container
+                                    slds-icon-standard-account 
+                                    slds-combobox__input-entity-icon" title="Account">
+                            <lightning-icon icon-name={iconName} ></lightning-icon>
+                        </span>
+                        <input class="slds-input slds-combobox__input
+                            slds-combobox__input-value" 
+                            id="combobox-id-5" aria-controls="listbox-id-5" 
+                            autocomplete="off" role="textbox" type="text" 
+                            placeholder="Select an Option" readonly=""
+                            value={selectedValue.Name}
+                            disabled
+                            />
+                        <button class="sicon_container slds-button slds-button_icon 
+                                    slds-input__icon slds-input__icon_right" 
+                                title="Remove selected option"
+                                onclick={handleRemove}>
+                            <lightning-icon icon-name="utility:close" size="small">
+
+                            </lightning-icon>
+                            <span class="slds-assistive-text">Remove selected option</span>
+                        </button>
+                    </div>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <lightning-textarea name="input2" label="Textarea field with a predefined value" value="initial value" class="tallTextArea"></lightning-textarea>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title="Contact List">
+        <c-page-size-setup-form rows-to-skip={rowsToSkip} onpagesizeselect={pageSizeHandler}></c-page-size-setup-form>
+        <c-data-table-results page-size={pageSize} rows-to-skip={rowsToSkip} onselectedrows={selectedRowsHandler}></c-data-table-results>
+        <c-pagination-setup-form page-size={pageSize} rows-to-skip={rowsToSkip} onsetrowstoskip={rowsToSkipHandler}></c-pagination-setup-form>
+    </lightning-card>
+</template>

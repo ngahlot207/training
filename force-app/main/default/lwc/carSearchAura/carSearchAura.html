@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-m-botton_small">
+        <lightning-card title="Set Your View">
+            <c-car-search-form-aura oncartypeselect={carTypeSelectHandler}></c-car-search-form-aura>
+        </lightning-card>
+    </div>
+    <div class="slds-m-vertical_small">
+        <lightning-card title="Selected View">
+            <template if:true={carTypeId}>
+                <c-car-search-result-aura car-type-id={carTypeId}></c-car-search-result-aura>
+            </template>
+            <template if:false={carTypeId}>
+                <c-car-search-result-aura car-type-id=""></c-car-search-result-aura>
+            </template>
+        </lightning-card>
+    </div>
+</template>

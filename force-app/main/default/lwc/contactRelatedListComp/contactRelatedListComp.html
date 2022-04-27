@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Contacts">
+        <table class="slds-table slds-table_bordered">
+            <thead>
+                <th>
+                    <div class="slds-truncate" title="Contact Name">Contact Name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+            </thead>
+            <tbody>
+                <template if:true={isContacts}>
+                    <template for:each={contactList} for:item="con" for:index="index">
+                        <tr key={con.Id} data-rowid={index} data-subtableid="table">
+                            <td><lightning-formatted-url value={con.ContactId} label={con.Name}></lightning-formatted-url></td>
+                            <td><lightning-formatted-url value={con.AccountId} label={con.AccountName}></lightning-formatted-url></td>
+                            <td><div style="color:green">{con.Phone}</div></td>
+                        </tr>
+                    </template>
+                </template>
+                <template if:false={isContacts}>
+                    
+                        <p>No contacts found!</p>
+
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

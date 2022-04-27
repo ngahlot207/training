@@ -1,0 +1,54 @@
+<aura:component extends="c:BaseComponent" controller="CarExperience">
+    <aura:attribute name="car" type="Car__c" access="public"/>
+    <aura:attribute name="carExperiences" type="Car_Experiance__c[]" access="public"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.car}" action="{!c.doInit}" />
+    <aura:method name="refresh" action="{!c.doInit}" description="method would be called from parent car details"/>
+    <ui:scrollerWrapper class="scrollerSize">
+        <aura:if isTrue="{!v.carExperiences.length==0}">
+            <lightning:layoutItem class="slds-align_absolute-center" flexibility="auto" padding="around-small">
+                <ui:outputText value="No experience posted for the car"/>
+            </lightning:layoutItem>
+            <aura:set attribute="else">
+                <aura:iteration items="{!v.carExperiences}" var="carExp">
+                    <div class="slds-feed">
+                        <ul class="slds-feed__list">
+                            <li class="slds-feed__item">
+                                <article class="slds-post">
+                                    <header class="slds-post__header slds-media">
+                                        <div class="slds-media__figure">
+                                            <a href="javascript:void(0);" class="slds-avatar slds-avatar_circle slds-avatar_large">
+                    
+                                                <!-- Displaying user photo -->
+                                                <img alt="{!carExp.CreatedBy.Name}" src="{!carExp.CreatedBy.SmallPhotoUrl}" title="{!carExp.CreatedBy.Name}" />
+                    
+                                            </a>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                                <p>
+                                                    <!-- Displaying user name and company name -->
+                                                    <a href="javascript:void(0);" data-userid="{!carExp.CreatedBy.Id}" 
+                                                      onclick="{!c.onUserInfoClick}">{!carExp.CreatedBy.Name}</a> — {!carExp.CreatedBy.CompanyName}</p>
+                                            </div>
+                                            <p class="slds-text-body_small">
+                                                <ui:outputDateTime value="{!carExp.CreatedDate}" /></p>
+                                        </div>
+                                    </header>
+                                    <div class="slds-post__content slds-text-longform">
+                                        <!-- Displaying the title -->
+                                        <p class="slds-text-title_caps">{!carExp.Name}</p>
+                                        <p class="slds-text-body_small">
+                                            <!-- Displaying experince inside a formattedRichText -->
+                                            <lightning:formattedRichText value="{!carExp.Experience__c}" />
+                                        </p>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+                </aura:iteration>
+            </aura:set>
+        </aura:if>
+    </ui:scrollerWrapper>
+</aura:component>

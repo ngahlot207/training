@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:lightningQuickAction,flexipage:availableForAllPageTypes,force:appHostable">
+     
+    <!--Declare Quick Action API-->
+    <lightning:quickActionAPI aura:id="qaAPI" />
+     
+    <div class="slds-m-around--xx-large">
+        <lightning:button label="Update Status to Working" onclick="{!c.handleStatusWorking}"/>
+        <!--<lightning:button label="Update Status to Escalated" onclick="{!c.handleStatusEscalated}"/>     -->     
+    </div>
+</aura:component>

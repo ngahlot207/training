@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+	<aura:attribute name="hunger" type="Hunger__c" access="public" default="{
+                    'sObjectType': 'Hunger__c',   
+                    'Name': 'Restaurant1',  
+                    'Picture__c': '/resource/HungerMealBox/' }"/>
+    <lightning:button variant="neutral" class="tile" onclick="OnHungerClick">
+        <div style="{# 'background-image:url('+ v.hunger.Picture__c +')'}" class="innertile">
+            <div class="lower-third"> 
+                <h1 class="slds-truncate">{!v.hunger.Contact__r.Name}</h1>
+            </div>
+        </div> 
+    </lightning:button>
+</aura:component>

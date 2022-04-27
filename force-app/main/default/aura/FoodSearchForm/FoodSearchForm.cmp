@@ -1,0 +1,32 @@
+<aura:component controller="HungerTypesSearchController" extends="c:BaseComponent" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="buttonLabel" type="String" default="Search Button"/>
+    <aura:attribute name="NewLabel" type="String" default="New Button"/>
+    <aura:attribute name="showNew" type="Boolean" default="false"/>
+    <aura:attribute name="HungerTypes" type="Hunger_Types__c[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--<aura:handler name="render" value="{!this}" action="{!c.handleRender}"></aura:handler>-->
+    
+    <aura:registerEvent name="searchFormSubmit" type="c:SearchFormSubmitEvent"/>
+    
+    <lightning:layout horizontalAlign="center" >
+    	<lightning:layoutItem padding="around-small">
+            <lightning:select name="selectitem" aura:id="HungerTypesList" label="Hunger Type" variant="label-hidden" value="" >
+                <option value="" text="All Types"/>
+				<aura:iteration items="{!v.HungerTypes}" var="hungerType">
+                    <option value="{!hungerType.Id}" text="{!hungerType.Name}"/>
+                </aura:iteration>
+            </lightning:select>
+        <!--</lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">-->
+            <lightning:button variant="brand" label="{!v.buttonLabel}" onclick="{!c.onsearchevent}" />
+            <!--<lightning:button variant="neutral" label="Toggle button" onclick="{!c.togglebutton}"/>-->
+            <aura:if isTrue="{!v.showNew}">
+        		<lightning:button variant="neutral" label="{#v.NewLabel}" onclick="{!c.createNewHungerTypes}"/>
+                <!--<aura:set attribute="else">
+                    New Button is not added here.
+                </aura:set>-->
+            </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+</aura:component>

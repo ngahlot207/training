@@ -1,0 +1,17 @@
+<aura:component  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+      <!--Declared 5 attributes with some default values  -->
+    <aura:attribute name="backgroundColor" type="String" default="#000000" />
+    <aura:attribute name="boxPadding" type="Integer" default="25" />
+    <aura:attribute name="logoURL" type="String" default="https://brandfolder.com/salesforce/logo/salesforce-primary-logo.png"/>
+    <aura:attribute name="textFontSize" type="Integer" default="18" />
+    <aura:attribute name="textColor" type="String" default="#e81717" />
+    
+    <div style="{!'padding:' + v.boxPadding +'px; background-color:' + v.backgroundColor}">
+      
+	  <img src="{!v.logoURL}" width="200" height="200" />
+     
+     <p style="{!'font-size:' + v.textFontSize + 'px; color:' + v.textColor}">
+       Hi This is s Sample Demo of How to use Desing Resource In Lightning Componnet
+     </p>
+    </div>
+</aura:component>

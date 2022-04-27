@@ -1,0 +1,29 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="con" type="Contact" access="public"/>
+	<force:recordData aura:Id="service"
+                      mode="EDIT"
+                      targetFields="{!v.Contact}"
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.onRecordUpdated}"
+                      fields="Id, Name, Phone, Email, Birthdate, Languages__c"/>
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.Contact.Name}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.Contact.Phone}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.Contact.Email}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.Contact.Birthdate}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.Contact.Languages__c}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

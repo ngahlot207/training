@@ -1,0 +1,11 @@
+.slds-textarea{
+    min-height: 400px;
+}
+
+lightning-textarea.slds-form-element{
+    padding: 10px;
+}
+
+.slds-button-group{
+    padding: 10px;
+}

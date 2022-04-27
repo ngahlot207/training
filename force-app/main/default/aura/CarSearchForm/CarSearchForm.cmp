@@ -1,0 +1,31 @@
+<aura:component controller="CarTypeSearch" extends="c:CarSearchBaseComponent" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+	<aura:attribute name="buttonLabel" type="String" default="Search"></aura:attribute>
+    <aura:attribute name="newButtonLabel" type="String" default="New"></aura:attribute>
+    <aura:attribute name="showNew" type="Boolean" default="False"></aura:attribute>
+    <aura:attribute name="carTypes" type="Car_Type__c[]"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    <!--<aura:handler name="render" value="{!this}" action="{!c.handleRender}"></aura:handler>-->
+    <aura:registerEvent name="searchFormSubmit" type="c:CarSearchFormSubmitEvent"/>
+    
+    <lightning:layout horizontalAlign="center" >
+    	<lightning:layoutItem padding="around-small">
+            <lightning:select name='selectItem' aura:id="carTypeList" label='All Types' variant="label-hidden" value="" class="slds-form_inline">
+            <!--<lightning:select name='selectItem' aura:id="carTypeList" label='All Types' variant="label-hidden" value="" onchange="{!c.selectedValue}">-->
+            	<option value="" text="All Types"></option>
+                <aura:iteration items="{!v.carTypes}" var="carType">
+                    <option value="{!carType.Id}" text="{!carType.Name}"></option>
+                </aura:iteration>
+            </lightning:select>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small" flexibility="auto">
+            <lightning:button label="{!v.buttonLabel}" variant="brand" onclick="{!c.onSearchClick}"></lightning:button>
+            <!--<lightning:button label="Toggle Button" variant="brand" onclick="{!c.toggleClick}"></lightning:button>-->
+            <aura:if isTrue="{!v.showNew}">
+    			<lightning:button label="{#v.newButtonLabel}" variant="neutral" onclick="{!c.createRecord}"></lightning:button>
+                <!--<aura:set attribute="else">
+                    New Button can not be added.
+                </aura:set>-->
+  			</aura:if> 
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

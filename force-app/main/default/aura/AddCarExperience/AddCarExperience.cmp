@@ -1,0 +1,25 @@
+<aura:component extends="c.baseComponent">
+    <aura:attribute name="car" type="Car__c" access="public"/>
+    <aura:attribute name="carExperience" type="Car_Experiance__c" access="public"/>
+    <aura:attribute name="recordError" type="String" access="private"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:registerEvent name="carExpAdded" type="c:CarExpAdded" />
+    <force:recordData aura:Id="service"
+                      mode="EDIT"
+                      targetFields="{!v.carExperience}"
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.onRecordUpdated}"
+                      fields="Id, Name, Experience__c, Car__c"/>
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.carExperience.Name}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <label class="slds-form-element__label" for="input-id-01">Description</label>
+            <lightning:inputRichText value="{!v.carExperience.Experience__c}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+            <lightning:button label="Add Experience" iconName="utility:save" onclick="{!c.onSave}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

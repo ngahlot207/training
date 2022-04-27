@@ -1,0 +1,6 @@
+<aura:component implements="force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+        <lightning:utilityBarAPI aura:id="utilitybar" />
+        <lightning:card>
+                <c:customUtilityBar onopenutilitybar="{!c.openUtilityBar}"></c:customUtilityBar>
+        </lightning:card>
+</aura:component>

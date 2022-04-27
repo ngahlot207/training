@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="selectedMeetingRoom" type="Object"/>
+    <c:auraPubsub aura:id="pubSubModule" onready="{!c.subscribeEvent}"/>
+    <lightning:card title="Meeting Room Pub Sub Handler">
+        You have selected Meeting Room : {!v.selectedMeetingRoom.roomName}
+        <p>
+            Room Capacity: {!v.selectedMeetingRoom.roomCapacity}
+        </p>
+    </lightning:card>
+</aura:component>

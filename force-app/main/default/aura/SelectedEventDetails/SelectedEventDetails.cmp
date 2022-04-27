@@ -1,0 +1,25 @@
+<aura:component>
+    <aura:attribute name="eventDetail" type="Event" default="{
+                                                             	'Who' : 'Prabhdeep Kaur',
+                                                             	'Subject' : 'Email',
+                                                             	'ActivityDate' : '2019-09-13'
+                                                             }" access="public"/>
+    <lightning:layout multiplerows="true">
+        <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6" flexibility="true">
+                <div class="slds-p-horizontal--small">
+                    <div>
+                        <span class="label">Who: </span>
+                        <lightning:formattedText value="{!v.eventDetail.Who}"/>
+                    </div>
+                    <div>
+                        <span class="label">Subject: </span>
+                        <lightning:formattedText value="{!v.eventDetail.Subject}"/>
+                    </div>
+                    <div>
+                        <span class="label">Activity Date: </span>
+                        <lightning:formattedText value="{!v.eventDetail.ActivityDate}"/>
+                    </div>
+                </div>
+            </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

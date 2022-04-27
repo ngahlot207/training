@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Available Furnitures">
+        <lightning-layout>
+            <lightning-layout-item size="4" padding="around-small">
+                <ul>
+                    <template for:each={furnitureinfo} for:item="furniture">
+                        <li key={furniture.name} style="padding: 10px">
+                            <c-furniture-demo furnitureinfo={furniture} ></c-furniture-demo>
+                        </li>
+                    </template>
+                </ul>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

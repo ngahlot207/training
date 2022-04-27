@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Contact List">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="horizontal-small">
+                <lightning-combobox name="pageSize" placeholder="Size" label="Size" variant="label-hidden" value={selectedValue} options={pageSize} onchange={pageSizeChangeHandler}>
+                </lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item padding="horizontal-small">
+                <lightning-datatable
+                    key-field="Id"
+                    data={results}
+                    columns={columns}>
+                </lightning-datatable>
+            </lightning-layout-item>
+        </lightning-layout>  
+    </lightning-card>
+</template>

@@ -1,0 +1,21 @@
+<aura:component controller="GetEventController" implements="flexipage:availableForAllPageTypes" extends="c:EventBaseComponent">
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelecton" type="Integer" default="5"/>
+    <aura:attribute name="activityDateComponent" type="Date" access="public"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+	<aura:method name="searchEvents" action="{!c.doSearch}" description="Get events from Server based, date supplied to this component" access="public">
+        <aura:attribute name="activityDate" type="date" default="" access="public"/>
+    </aura:method>
+    <lightning:layout horizontalAlign="space" >
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:datatable 
+                                 columns="{!v.columns}"
+                                 data="{!v.data}"
+                                 keyField="Id"
+                                 hideCheckboxColumn="true"
+                                 onrowaction="{!c.handleRowAction}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

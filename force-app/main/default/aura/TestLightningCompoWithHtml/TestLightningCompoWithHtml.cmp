@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <p class="para1">First Component bla</p>
+    <p class="para2">First Component bla bla</p>
+    <div>
+        <p class="para3">First Component bla bla bla</p>
+    </div>
+    <br/>
+    <lightning:formattedText value="I like salesforce.com and info.salesforce.com" />
+    <br/>
+    <lightning:button variant="brand" label="Wola!!!"/>
+</aura:component>

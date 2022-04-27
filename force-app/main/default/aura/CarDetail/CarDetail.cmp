@@ -1,0 +1,56 @@
+<aura:component implements="flexiPage:availableForAllPageTypes">
+	<aura:attribute name="car" type="Car__c" access="public" default="{
+                                                                      'Name': 'My Default Car',
+                                                                      'Contact__r': {
+                                                                      					'Name': 'Default Car'
+                                                                      				},
+                                                                      'Car_Type__r': {
+                                                                      					'Name': 'Default Car Type'
+                                                                      				 },
+                                                                      'Build_Year__c': 2000,
+                                                                      'Per_Day_Rent__c': 100,
+                                                                      'Mileage__c': 10,
+                                                                      'Picture__c': '/resource/cars/luxury/ford_mustang.jpeg'
+                                                                      }"/>
+    <aura:attribute name="showCardAction" type="boolean" access="public" default="false"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <lightning:card iconName="utility:setup_assistant_guide">
+        <aura:set attribute="title">
+            <lightning:formattedText value="{!v.car.Contact__r.Name + '\'s Car'}"/>
+        </aura:set>
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.showCardAction}">
+                <lightning:button variant="neutral" label="Full Details" onclick="{!c.onFullDetails}"/>
+            </aura:if>
+        </aura:set>
+        <lightning:layout multiplerows="true">
+            <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6" flexibility="true">
+                <div class="slds-p-horizontal--small">
+                    <div class="carproperty">
+                        <span class="label">Car Name:</span>
+                        <lightning:formattedText value="{!v.car.Name}"/>
+                    </div>
+                    <div class="carproperty">
+                        <span class="label">Type:</span>
+                        <lightning:formattedText value="{!v.car.Car_Type__r.Name}"/>
+                    </div>
+                    <div class="carproperty">
+                        <span class="label">Build Year:</span>
+                        <lightning:formattedNumber value="{!v.car.Build_Year__c}"/>
+                    </div>
+                    <div class="carproperty">
+                        <span class="label">Per Day Rent:</span>
+                        <lightning:formattedNumber value="{!v.car.Per_Day_Rent__c}"/>
+                    </div>
+                    <div class="carproperty">
+                        <span class="label">Mileage:</span>
+                        <lightning:formattedNumber value="{!v.car.Mileage__c}"/>
+                    </div>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="3" flexibility="true">
+                <div class="imageview" style="{!'background-image:url('+v.car.Picture__c+')'}"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

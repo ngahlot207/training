@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="">
+        <div>
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12">
+                    <lightning-layout  multiple-rows="true">
+                        <lightning-layout-item size="12">
+                            <div class="slds-p-around_medium lgc-bg">
+                                <div class="slds-m-left_x-medium slds-m-right_x-medium">
+                                    <lightning-input type="text" label="Create a new component" required value={newCompName} onchange={handleCompNameChange}></lightning-input>
+                                    <div class="slds-p-top_medium">
+                                        <lightning-button variant="brand" label="Create" title="Secondary action" onclick={createCompClick} ></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <div class="slds-m-top_x-small">
+                                <span class="slds-badge slds-theme_warning">
+                                    <span class="slds-badge__icon slds-badge__icon_left">
+                                        <span class="slds-icon_container slds-icon-utility-moneybag slds-current-color" title="Description of icon when needed">
+                                            <svg class="slds-icon slds-icon_xx-small" aria-hidden="false">
+                                            <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg?cache=9.31.2-1#announcement"></use>
+                                            </svg>
+                                        </span>
+                                    </span>Total: {compSize} Lightning web components found.
+                                </span>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" >
+                            <div class="slds-m-top_x-small">
+                                <template if:true={lwcRecords}>
+                                    <lightning-combobox
+                                        name="lwcRecords"
+                                        label="Select a component to view code"
+                                        placeholder=""
+                                        required
+                                        options={lwcRecords}
+                                        onchange={handleLwcRecordChange} >
+                                    </lightning-combobox>
+                                </template>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

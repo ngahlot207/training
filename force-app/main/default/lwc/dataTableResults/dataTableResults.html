@@ -1,0 +1,14 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item padding="around-small">
+            <lightning-button label="Bingo!" variant="neutral" onclick={getSelectedHandler}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item padding="horizontal-small">
+            <lightning-datatable
+                    key-field="Id"
+                    data={results}
+                    columns={columns}>
+                </lightning-datatable>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

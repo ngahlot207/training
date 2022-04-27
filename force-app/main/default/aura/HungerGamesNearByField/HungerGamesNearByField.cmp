@@ -1,0 +1,9 @@
+<aura:component>
+    <aura:attribute name="isSearching" type="Boolean" default="false"/>
+    <aura:attribute name="locationValue" type="String"/>
+    <aura:attribute name="outputValue" type="String"/>
+    <div class="slds-grid slds-wrap">
+        <lightning:badge label="Near By" iconName="utility:success" class="slds-col slds-size_1-of-10"></lightning:badge>
+        <lightning:input type="search" value="{!v.locationValue}" onkeyup="{!c.handleKeyUp}" isLoading="{!v.isSearching}" class="slds-col slds-size_3-of-10" padding-left="100px" padding-top="20px"/>
+    </div>
+</aura:component>

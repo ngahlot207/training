@@ -1,0 +1,28 @@
+<template>
+    <lightning-card>
+        <div slot="title">
+            <h3> 
+                <lightning-icon icon-name="standard:contact" size="small"></lightning-icon> Insert a Contact Record in LWC           
+             </h3>
+        </div>
+    <lightning-record-edit-form
+        object-api-name="Contact">
+    
+
+    <!-- For Each Input Field -->
+        <template for:each={inputFields} for:item="item">
+            <lightning-input-field field-name={item} name={item} key={item} id={item}>
+            </lightning-input-field>
+        </template>
+    
+    </lightning-record-edit-form>
+    
+      <div class="slds-grid slds-wrap">
+            </div>
+
+            <div slot="footer">
+                <lightning-button label="Create Contact Record" variant="brand" onclick={insertContactAction}></lightning-button>        
+            </div>
+         </div>
+    </lightning-card>
+</template>
